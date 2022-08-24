@@ -35,7 +35,7 @@ jobs:
       - run: go tool cover -func coverage.out -o coverage.txt
         working-directory: ./src
         name: Convert Code Coverage Report format
-      - run: python coverage.py
+      - run: python coverage.py 1
         working-directory: ./src
         name: Simple Quality Gate
 
