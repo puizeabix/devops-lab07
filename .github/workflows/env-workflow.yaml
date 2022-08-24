@@ -13,5 +13,10 @@ jobs:
     env:
       TOKEN: ${{ secrets.TOKEN }}
     steps:
-      - name: check value 
-        run: sh -c 'if [ $TOKEN == "production" ]; then echo "matched"; else echo "not matched"; fi'
+      - name: check production
+        run: sh -c 'if [ "$TOKEN" == "production" ]; then echo "production"; else echo "not production"; fi'
+      - name: check dev
+        run: sh -c 'if [ "$TOKEN" == "dev" ]; then echo "dev"; else echo "not dev"; fi'
+      - name: check repo
+        run: sh -c 'if [ "$TOKEN" == "repo" ]; then echo "repo"; else echo "not repo"; fi'
+      
