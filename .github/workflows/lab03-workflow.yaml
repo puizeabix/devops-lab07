@@ -102,6 +102,6 @@ jobs:
       - uses: trstringer/manual-approval@v1
         with: 
           secret: ${{ github.TOKEN }}
-          approvals: puizeabix
+          approvers: puizeabix
       - name: Deploy to QA 
         run: echo "Deploy to QA"
