@@ -40,6 +40,23 @@ jobs:
         with:
           name: code-coverage-report
           path: src/coverage.txt
+  
+  code-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          ignore-unfixed: true
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL'
+      - uses: actions/upload-artifact@v3
+        with:
+          name: code-scan-result
+          path: trivy-results.sarif
 
 
   quality-gate:
