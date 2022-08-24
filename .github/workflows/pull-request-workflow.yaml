@@ -15,5 +15,7 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           go-version-file: './src/go.mod'
+      - run: go mod tidy
+        working-directory: ./src
       - run: go test ./...
         working-directory: ./src
