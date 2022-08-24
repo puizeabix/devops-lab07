@@ -38,3 +38,17 @@ jobs:
       - run: python coverage.py
         working-directory: ./src
         name: Simple Quality Gate
+
+  comment:
+    runs-on: ubuntu-latest
+    needs: ["unittest"]
+    steps:
+      - uses: actions/script@v3
+        with:
+          script: |
+            github.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Code Scanning is passed'
+            })
