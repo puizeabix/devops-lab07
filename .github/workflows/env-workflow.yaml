@@ -1,0 +1,17 @@
+name: Env workflow
+
+on: 
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  simple-job:
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      TOKEN: ${{ secrets.TOKEN }}
+    steps:
+      - name: echo 
+        run: echo $TOKEN
