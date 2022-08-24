@@ -7,7 +7,7 @@ if (len(sys.argv) <= 1):
 else:
     threshold = float(sys.argv[1])
 
-print("Threshold: " + threshold)
+print("Threshold: " + str(threshold))
 coverage_str = open('coverage.txt', 'r').readlines()[0]
 pattern =  r"^total\:\W+\w+\W+(?P<val>\d+\.\d)"
 m = re.search(pattern, coverage_str)
