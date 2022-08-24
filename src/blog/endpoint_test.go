@@ -28,3 +28,15 @@ func TestListBlogResponseError(t *testing.T) {
 		t.Errorf("got %v, expected %v", result, expected)
 	}
 }
+
+func TestGetBlogResponse(t *testing.T) {
+	expected := errors.New("Test")
+	l := getBlogResponse{
+		Err: expected,
+	}
+
+	result := l.error()
+	if result != expected {
+		t.Errorf("got %v, expected %v", result, expected)
+	}
+}
