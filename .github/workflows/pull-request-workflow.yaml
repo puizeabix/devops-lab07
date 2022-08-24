@@ -35,6 +35,11 @@ jobs:
       - run: go tool cover -func coverage.out -o coverage.txt
         working-directory: ./src
         name: Convert Code Coverage Report format
+      - uses: actions/upload-artifact@v3
+        name: Store code coverage report 
+        with:
+          name: code-coverage-report
+          path: src/coverage.txt
       - run: python coverage.py 1
         working-directory: ./src
         name: Simple Quality Gate
