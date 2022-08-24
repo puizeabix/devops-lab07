@@ -8,7 +8,9 @@ else:
     threshold = float(sys.argv[1])
 
 print("Threshold: " + str(threshold))
-coverage_str = open('coverage.txt', 'r').readlines()[0]
+
+#Get the last line
+coverage_str = open('coverage.txt', 'r').readlines()[-1]
 pattern =  r"^total\:\W+\w+\W+(?P<val>\d+\.\d)"
 m = re.search(pattern, coverage_str)
 cov = float(m.groups()[0])
