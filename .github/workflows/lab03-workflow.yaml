@@ -1,8 +1,9 @@
-name: pttgc-devops-lab02
+name: PTTGC DevOps Lab02
 on:
   push:
     branches:
       - main
+      - master 
 
 jobs:
 
