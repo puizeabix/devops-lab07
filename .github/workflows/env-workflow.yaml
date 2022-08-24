@@ -9,9 +9,27 @@ on:
     
 
 jobs:
-  simple-job:
+  production:
     runs-on: ubuntu-latest
     environment: production
+    env:
+      TOKEN: ${{ secrets.TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: validate
+        run: python validate.py
+
+  dev:
+    runs-on: ubuntu-latest
+    environment: dev
+    env:
+      TOKEN: ${{ secrets.TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: validate
+        run: python validate.py
+  repo:
+    runs-on: ubuntu-latest
     env:
       TOKEN: ${{ secrets.TOKEN }}
     steps:
