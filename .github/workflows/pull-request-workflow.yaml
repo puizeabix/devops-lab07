@@ -54,6 +54,7 @@ jobs:
           output: 'trivy-results.sarif'
           severity: 'CRITICAL'
       - uses: actions/upload-artifact@v3
+        name: Upload trivy report
         with:
           name: code-scan-result
           path: trivy-results.sarif
@@ -61,7 +62,7 @@ jobs:
 
   quality-gate:
     runs-on: ubuntu-latest
-    needs: ["coverage", "unittest"]
+    needs: ["coverage", "unittest", "code-scan"]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/download-artifact@v3
