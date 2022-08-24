@@ -19,3 +19,22 @@ jobs:
         working-directory: ./src
       - run: go test ./...
         working-directory: ./src
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version-file: './src/go.mod'
+      - run: go mod tidy
+        working-directory: ./src
+        name: Download libraries
+      - run: go test -coverprofile coverage.out ./...
+        working-directory: ./src
+        name: Code Coverage Checking
+      - run: go tool cover -func coverage.out -o coverage.txt
+        working-directory: ./src
+        name: Convert Code Coverage Report format
+      - run: python coverage.py
+        working-directory: ./src
+        name: Simple Quality Gate
