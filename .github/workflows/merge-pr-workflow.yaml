@@ -17,5 +17,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Build docker
+        working-directory: ./src
         run: |
           docker build -t zeabix.com/blog-service:latest .
