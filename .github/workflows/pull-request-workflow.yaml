@@ -54,6 +54,7 @@ jobs:
           output: 'trivy-results.sarif'
           severity: 'CRITICAL'
       - uses: actions/upload-artifact@v3
+        name: Upload trivy report
         with:
           name: code-scan-result
           path: trivy-results.sarif
