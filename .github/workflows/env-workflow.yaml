@@ -18,22 +18,22 @@ jobs:
       - uses: actions/checkout@v3
       - name: validate
         run: python validate.py
-
-  # dev:
-  #   runs-on: ubuntu-latest
-  #   environment: dev
-  #   env:
-  #     TOKEN: ${{ secrets.TOKEN }}
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: validate
-  #       run: python validate.py
-  # repo:
-  #   runs-on: ubuntu-latest
-  #   env:
-  #     TOKEN: ${{ secrets.TOKEN }}
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: validate
-  #       run: python validate.py
-      
+  dev:
+    runs-on: ubuntu-latest
+    # This will tell GitHub Actions to use environment dev
+    environment: dev
+    env:
+      TOKEN: ${{ secrets.TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: validate
+        run: python validate.py
+  # Job name repo, run without specify the environment, it should get the secret from Repository Secret
+  repo:
+    runs-on: ubuntu-latest
+    env:
+      TOKEN: ${{ secrets.TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: validate
+        run: python validate.py
