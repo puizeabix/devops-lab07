@@ -2,7 +2,7 @@ name: blog-service
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   ## Sets environment variable
